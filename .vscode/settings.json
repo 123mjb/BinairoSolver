@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "scripts\\python.exe",
+    "git.enabled": true
+}
