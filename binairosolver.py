@@ -1,4 +1,7 @@
 def solve(inp:list[list[int]]):
+    g_threes = 0
+    g_ones = 0
+    g_zeros = 0
     for i in range(0,len(inp)):
         for g in range(0,len(inp[i])):
             if inp[i][g] == 3:
@@ -30,6 +33,15 @@ def solve(inp:list[list[int]]):
                         inp[i][g] = 0
                     if inp[i-1][g] == 0 and inp[i+1][g] == 0:
                         inp[i][g] = 1
+                g_threes += 1
+            if inp[i][g] == 1:g_ones += 1
+            if inp[i][g] == 0:g_zeros += 1
+            if g_zeros == len(inp[i])/2:
+                for l in range(0,len(inp[i])):
+                    if inp[i][l] == 3: inp[i][l] = 1
+            if g_ones == len(inp[i])/2:
+                for l in range(0,len(inp[i])):
+                    if inp[i][l] == 3: inp[i][l] = 1
     return inp
 def printer(output:list[list[int]]):
     printout=""
