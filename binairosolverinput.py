@@ -1,9 +1,10 @@
 import pygame
 from pygame import *
+
 from binairosolver import *
 
 pygame.init()
-DISPLAY_SIZE = tuple(map(lambda i, j: i - j, pygame.display.get_desktop_sizes()[0], (10,50)))
+DISPLAY_SIZE = tuple(map(lambda i, j: i - j, pygame.display.get_desktop_sizes()[0], (10,50)))  # type: ignore
 DISPLAYSURF = pygame.display.set_mode(tuple(DISPLAY_SIZE),pygame.RESIZABLE)
 board = [[3,3,3,3,3,3,3,3],[3,3,3,3,3,3,3,3],[3,3,3,3,3,3,3,3],[3,3,3,3,3,3,3,3],[3,3,3,3,3,3,3,3],[3,3,3,3,3,3,3,3],[3,3,3,3,3,3,3,3],[3,3,3,3,3,3,3,3]]
 colours = [pygame.Color(0,0,0),pygame.Color(255,255,255),pygame.Color(255,0,0)]
