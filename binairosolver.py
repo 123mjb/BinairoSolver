@@ -4,36 +4,35 @@ def solve(inp:list[list[int]]):
     for i in range(0,len(inp)):
         for g in range(0,len(inp[i])):
             if inp[i][g] == 3:
-                if len(inp[i])-g>3:
-                    if inp[i][g+1] == 1 and inp[i][g+2] == 1:
+                if len(inp[i])-g>3: # Check For Two Below
+                    if inp[i][g+1] == 1 and inp[i][g+2] == 1: 
                         inp[i][g] = 0
-                        if len(inp[i])-g >3 and inp[i][g+3] == 3:
+                        if len(inp[i])-g >3 and inp[i][g+3] == 3: #Setting third one down
                             inp[i][g+3] = 0
                     if inp[i][g+1] == 0 and inp[i][g+2] == 0:
                         inp[i][g] = 1
-                        if len(inp[i])-g >3 and inp[i][g+3] == 3:
+                        if len(inp[i])-g >3 and inp[i][g+3] == 3: #Setting third one down
                             inp[i][g+3] = 1
-                if len(inp)-i >3:
+                if len(inp)-i >3: # Check for two across
                     if inp[i+1][g] == 1 and inp[i+2][g] == 1:
                         inp[i][g] = 0
-                        if len(inp)-i >3 and inp[i+3][g] == 3:
+                        if len(inp)-i >3 and inp[i+3][g] == 3: #Setting third one across
                             inp[i+3][g] = 0
                     if inp[i+1][g] == 0 and inp[i+2][g] == 0:
                         inp[i][g] = 1
-                        if len(inp)-i >3 and inp[i+3][g] == 3:
+                        if len(inp)-i >3 and inp[i+3][g] == 3: #Setting third one across
                             inp[i+3][g] = 1
-                if g > 0 and len(inp[i]) - g > 1:
+                if g > 0 and len(inp[i]) - g > 1: # checking above and below
                     if inp[i][g-1] == 1 and inp[i][g+1] == 1:
                         inp[i][g] = 0
                     if inp[i][g-1] == 0 and inp[i][g+1] == 0:
                         inp[i][g] = 1
-                if i > 0 and len(inp) - i > 1:
+                if i > 0 and len(inp) - i > 1: # checking right and left
                     if inp[i-1][g] == 1 and inp[i+1][g] == 1:
                         inp[i][g] = 0
                     if inp[i-1][g] == 0 and inp[i+1][g] == 0:
                         inp[i][g] = 1
-            if inp[i][g] == 3:
-                if g>1:
+                if g>1:                         # check for two above
                     if inp[i][g-1] == 1 and inp[i][g-2] == 1:
                         inp[i][g] = 0
                         if g >2 and inp[i][g-3] == 3:
@@ -42,7 +41,7 @@ def solve(inp:list[list[int]]):
                         inp[i][g] = 1
                         if g >2 and inp[i][g-3] == 3:
                             inp[i][g-3] = 1
-                if i >1:
+                if i >1:                           # checking for two left
                     if inp[i-1][g] == 1 and inp[i-2][g] == 1:
                         inp[i][g] = 0
                         if i >2 and inp[i-3][g] == 3:
@@ -51,7 +50,7 @@ def solve(inp:list[list[int]]):
                         inp[i][g] = 1
                         if i >2 and inp[i-3][g] == 3:
                             inp[i-3][g] = 1
-    for i in range(0,len(inp)):
+    for i in range(0,len(inp)): # checking the amount of colours in a row
         numbersdown=[0,0,0]
         for g in inp[i]:
             if g==0: numbersdown[0]+=1
@@ -63,7 +62,7 @@ def solve(inp:list[list[int]]):
         if numbersdown[1] == 4:
             for k in range(0,len(inp[i])):
                 if inp[i][k] == 3: inp[i][k] = 0
-    for i in range(0,len(inp[0])):
+    for i in range(0,len(inp[0])): # checking the amount of colours in a column
         numbersacross=[0,0,0]
         for g in inp:
             if g[i]==0: numbersacross[0]+=1
@@ -75,8 +74,9 @@ def solve(inp:list[list[int]]):
         if numbersacross[1] == 4:
             for k in range(0,len(inp)):
                 if inp[k][i] == 3: inp[k][i] = 0
-    return inp
-def printer(output:list[list[int]]):
+    return inp #return
+
+def printer(output:list[list[int]]): # Printer for tests
     printout=""
     for i in range(0,len(output[0])):
         for g in range(0,len(output)):
